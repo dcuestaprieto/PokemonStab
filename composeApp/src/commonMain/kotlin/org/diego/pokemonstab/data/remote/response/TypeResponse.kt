@@ -1,6 +1,7 @@
 package org.diego.pokemonstab.data.remote.response
 
 import kotlinx.serialization.Serializable
+import org.diego.pokemonstab.domain.model.TypeModel
 
 @Serializable
 data class TypeResponse(
@@ -12,6 +13,13 @@ data class TypeResponse(
     @SerialName("id") val paramName:String
 
      */
-    val id:String,
-    val name:String
-)
+    val id: String,
+    val name: String
+) {
+    fun toDomain(): TypeModel {
+        return TypeModel(
+            id = id,
+            name = name
+        )
+    }
+}

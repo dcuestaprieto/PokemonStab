@@ -6,7 +6,7 @@ import io.ktor.client.request.get
 import org.diego.pokemonstab.data.remote.response.TypeResponse
 
 class ApiService(private val client: HttpClient) {
-    suspend fun getSingleType(id:String):TypeResponse{
+    suspend fun getTypeById(id: String): TypeResponse {
         return client.get("/type/$id").body<TypeResponse>()
     }
 }
