@@ -65,11 +65,11 @@ kotlin {
 }
 
 android {
-    namespace = "org.diego.pokemonstab"
+    namespace = "org.dcuestaprieto.pokemonstab"
     compileSdk = 35
 
     defaultConfig {
-        applicationId = "org.diego.pokemonstab"
+        applicationId = "org.dcuestaprieto.pokemonstab"
         minSdk = libs.versions.android.minSdk.get().toInt()
         targetSdk = libs.versions.android.targetSdk.get().toInt()
         versionCode = 1
