@@ -24,7 +24,7 @@ val dataModule = module {
             install(DefaultRequest) {
                 url {
                     protocol = URLProtocol.HTTPS
-                    host = "https://pokeapi.co/api/v2/"
+                    host = "pokeapi.co/api/v2/"
                     //parameters.append("key","value")
                 }
             }

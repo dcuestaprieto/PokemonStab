@@ -13,7 +13,7 @@ data class TypeResponse(
     @SerialName("id") val paramName:String
 
      */
-    val id: String,
+    val id: Int,
     val name: String
 ) {
     fun toDomain(): TypeModel {
