@@ -1,8 +1,10 @@
 package org.diego.pokemonstab.domain
 
+import org.diego.pokemonstab.domain.model.TypeModel
+
 class GetRandomType(private val repository: TypesRepository) {
-    suspend operator fun invoke(){
+    suspend operator fun invoke():TypeModel{
         val random = 7
-        repository.getTypeById(random.toString())
+        return repository.getTypeById(random.toString())
     }
 }
