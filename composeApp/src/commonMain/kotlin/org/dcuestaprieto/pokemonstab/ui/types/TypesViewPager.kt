@@ -26,7 +26,7 @@ import androidx.compose.ui.unit.times
 import kotlinx.coroutines.launch
 
 @Composable
-fun TwoViewsWithIndicator() {
+fun TypeDetail(typeName: String) {
     val pagerState = rememberPagerState(
         initialPage = 0,
         pageCount = { 2 }
@@ -45,7 +45,8 @@ fun TwoViewsWithIndicator() {
             val tabWidth = maxWidth / 2
 
             // calculos calculos
-            val indicatorOffset = (pagerState.currentPage + pagerState.currentPageOffsetFraction) * tabWidth
+            val indicatorOffset =
+                (pagerState.currentPage + pagerState.currentPageOffsetFraction) * tabWidth
 
             Column(modifier = Modifier.fillMaxSize()) {
                 Row(
@@ -92,7 +93,7 @@ fun TwoViewsWithIndicator() {
             modifier = Modifier.fillMaxSize()
         ) { page ->
             when (page) {
-                0 -> FirstScreen()
+                0 -> FirstScreen(typeName)
                 1 -> SecondScreen()
             }
         }
@@ -100,12 +101,12 @@ fun TwoViewsWithIndicator() {
 }
 
 @Composable
-fun FirstScreen() {
+fun FirstScreen(content: String) {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
-        Text(text = "Contenido de la Vista 1")
+        Text(text = "Vista de tipo $content")
     }
 }
 

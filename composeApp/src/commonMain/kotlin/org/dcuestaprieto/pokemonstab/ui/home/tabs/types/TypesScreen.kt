@@ -27,7 +27,8 @@ fun TypesScreen(navController: NavHostController) {
                     modifier = Modifier
                         .fillMaxWidth()
                         .clickable {
-                            navController.navigate(Routes.Favourites.route)
+                            //TODO:change hardcoded detail route
+                            navController.navigate("detail/${type.name}")
                         }
                 )
             }
