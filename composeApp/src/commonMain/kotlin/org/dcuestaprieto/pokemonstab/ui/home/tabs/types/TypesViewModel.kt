@@ -9,9 +9,10 @@ import kotlinx.coroutines.flow.StateFlow
 import kotlinx.coroutines.flow.update
 import kotlinx.coroutines.launch
 import kotlinx.coroutines.withContext
+import org.dcuestaprieto.pokemonstab.data.remote.ApiService
 import org.dcuestaprieto.pokemonstab.domain.GetRandomType
 
-class TypesViewModel(private val getRandomType: GetRandomType) : ViewModel() {
+class TypesViewModel(private val getRandomType: GetRandomType, apiService: ApiService) : ViewModel() {
     private val _state = MutableStateFlow(TypesState())
     val state: StateFlow<TypesState> = _state
 
@@ -20,7 +21,10 @@ class TypesViewModel(private val getRandomType: GetRandomType) : ViewModel() {
             val result = withContext(Dispatchers.IO){
                 getRandomType()
             }
-            _state.update { it.copy(randomType = result) }
+            val typesList = withContext(Dispatchers.IO){
+                apiService.getAllTypes()
+            }
+            _state.update { it.copy(randomType = result, typesList = typesList.results) }
         }
     }
 }

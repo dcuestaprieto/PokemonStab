@@ -26,7 +26,7 @@ fun HomeScreen() {
     val navController = rememberNavController()
     //bottomBar es un parametro de scaffold que nos permite organizar mejor la vista para fijar el contenido abajo
     Scaffold(bottomBar = { BottomNavigation(items, navController) }) {
-        Box{
+        Box {
             NavigationBottomWrapper(navController)
         }
     }
@@ -43,9 +43,9 @@ fun BottomNavigation(items: List<BottomBarItem>, navController: NavHostControlle
                 icon = item.icon,
                 label = { Text(item.title) },
                 onClick = {
-                    navController.navigate(item.route){
+                    navController.navigate(item.route) {
                         navController.graph.startDestinationRoute?.let { route ->
-                            popUpTo(route){
+                            popUpTo(route) {
                                 saveState = true
                             }
                         }

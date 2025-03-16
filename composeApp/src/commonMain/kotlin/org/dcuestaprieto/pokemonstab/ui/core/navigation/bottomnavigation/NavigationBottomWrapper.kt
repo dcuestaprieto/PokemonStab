@@ -12,11 +12,10 @@ import org.dcuestaprieto.pokemonstab.ui.home.tabs.types.TypesScreen
 fun NavigationBottomWrapper(navController: NavHostController){
     NavHost(navController = navController, startDestination = Routes.Types.route){
         composable(route = Routes.Types.route) {
-            TypesScreen()
+            TypesScreen(navController)
         }
         composable(route = Routes.Favourites.route) {
             FavouritesScreen()
         }
     }
-
 }
