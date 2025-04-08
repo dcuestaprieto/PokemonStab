@@ -5,7 +5,7 @@ import org.dcuestaprieto.pokemonstab.domain.model.AllTypesModel
 
 @Serializable
 data class AllTypesResponse(
-    val results: List<TypeResponse>
+    val results: List<TypeDetailUrlResponse>
 ) {
     fun toDomain(): AllTypesModel {
         return AllTypesModel(

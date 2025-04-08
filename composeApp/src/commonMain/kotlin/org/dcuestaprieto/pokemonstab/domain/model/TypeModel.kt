@@ -1,5 +1,6 @@
 package org.dcuestaprieto.pokemonstab.domain.model
 
 data class TypeModel(
-    val name: String
+    val name: String,
+    val imageUrl: String
 )

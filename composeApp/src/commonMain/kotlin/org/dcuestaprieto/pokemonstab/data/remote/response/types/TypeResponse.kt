@@ -16,7 +16,9 @@ data class TypeResponse(
 ) {
     fun toDomain(): TypeModel {
         return TypeModel(
-            name = name
+            name = name,
+            //TODO: change empty string
+            imageUrl = ""
         )
     }
 }
