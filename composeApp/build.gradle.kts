@@ -57,6 +57,11 @@ kotlin {
             implementation(libs.kotlin.serialization)
 
             implementation(libs.viewmodel.compose)
+
+            //coil
+            implementation(libs.coil.compose)
+            implementation(libs.coil.network.ktor2)
+            implementation(libs.coil.network.ktor3)
         }
         iosMain.dependencies {
             implementation(libs.ktor.client.darwin)
