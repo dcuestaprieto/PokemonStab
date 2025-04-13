@@ -14,11 +14,16 @@ import org.dcuestaprieto.pokemonstab.data.remote.response.types.TypeListResponse
 import org.dcuestaprieto.pokemonstab.data.remote.response.types.TypeResponse
 import kotlin.random.Random
 
+const val PREFERRED_GENERATION = "generation-ix"
+const val PREFERRED_GENERATION_GAME = "scarlet-violet"
+
 class ApiService(private val client: HttpClient) {
     suspend fun getTypeById(id: String): TypeResponse {
         return client.get("/type/$id").body<TypeResponse>()
     }
+
     suspend fun getAllTypes(): AllTypesResponse = coroutineScope {
+        //todo: create class for urls
         val typeListResponse: TypeListResponse = client.get("/type/").body()
 
         // 📦 Usamos async para realizar las llamadas a cada detalle en paralelo
@@ -41,6 +46,10 @@ class ApiService(private val client: HttpClient) {
 }
 
 private fun getRandomSpriteUrl(sprites: Map<String, Map<String, SpriteEntry?>>): String? {
+    val generationIxMap = sprites[PREFERRED_GENERATION]
+    //search for the preferred game and if exists return it's url type image
+    generationIxMap?.get(PREFERRED_GENERATION_GAME)?.nameIcon?.let { return it }
+    //else logic for return a random url type image
     val urls: List<String> = sprites.flatMap { (_, generationMap) ->
         generationMap.values.mapNotNull { it?.nameIcon }
     }
