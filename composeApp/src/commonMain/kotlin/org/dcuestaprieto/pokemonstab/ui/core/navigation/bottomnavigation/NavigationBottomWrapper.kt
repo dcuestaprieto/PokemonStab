@@ -1,6 +1,7 @@
 package org.dcuestaprieto.pokemonstab.ui.core.navigation.bottomnavigation
 
 import androidx.compose.runtime.Composable
+import androidx.compose.ui.Modifier
 import androidx.navigation.NavHostController
 import androidx.navigation.NavType
 import androidx.navigation.compose.NavHost
@@ -12,8 +13,15 @@ import org.dcuestaprieto.pokemonstab.ui.home.tabs.types.TypesScreen
 import org.dcuestaprieto.pokemonstab.ui.types.TypeDetail
 
 @Composable
-fun NavigationBottomWrapper(navController: NavHostController) {
-    NavHost(navController = navController, startDestination = Routes.Types.route) {
+fun NavigationBottomWrapper(
+    navController: NavHostController,
+    modifier: Modifier = Modifier
+) {
+    NavHost(
+        navController = navController,
+        startDestination = Routes.Types.route,
+        modifier = modifier
+    ) {
         composable(route = Routes.Types.route) {
             TypesScreen(navController)
         }
@@ -28,7 +36,6 @@ fun NavigationBottomWrapper(navController: NavHostController) {
         ) { backStackEntry ->
             val typeName = backStackEntry.savedStateHandle.get<String>("typeName") ?: "Not Found"
             TypeDetail(typeName)
-
         }
     }
 }
