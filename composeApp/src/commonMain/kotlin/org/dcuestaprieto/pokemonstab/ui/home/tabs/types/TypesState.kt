@@ -4,6 +4,5 @@ import org.dcuestaprieto.pokemonstab.data.remote.response.types.TypeDetailUrlRes
 import org.dcuestaprieto.pokemonstab.domain.model.TypeModel
 
 data class TypesState(
-    val randomType: TypeModel? = null,
     val typesList: List<TypeDetailUrlResponse>? = null
 )

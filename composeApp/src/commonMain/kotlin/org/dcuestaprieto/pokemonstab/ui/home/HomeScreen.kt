@@ -13,6 +13,7 @@ import androidx.navigation.NavDestination.Companion.hierarchy
 import androidx.navigation.NavHostController
 import androidx.navigation.compose.currentBackStackEntryAsState
 import androidx.navigation.compose.rememberNavController
+import org.dcuestaprieto.pokemonstab.ui.core.navigation.Routes
 import org.dcuestaprieto.pokemonstab.ui.core.navigation.bottomnavigation.BottomBarItem
 import org.dcuestaprieto.pokemonstab.ui.core.navigation.bottomnavigation.NavigationBottomWrapper
 
@@ -24,10 +25,28 @@ fun HomeScreen() {
     screen u otra
      */
 
-    val items = listOf(BottomBarItem.Types(), BottomBarItem.Favourites())
+    val items = listOf(
+        BottomBarItem.Types(),
+        BottomBarItem.Favourites()
+    )
     val navController = rememberNavController()
+
+    // list of routes where we want to show the BottomNavigation
+    val bottomBarRoutes = setOf(
+        Routes.Types.route,
+        Routes.Favourites.route
+    )
+
+    val navBackStackEntry by navController.currentBackStackEntryAsState()
+    val currentRoute = navBackStackEntry?.destination?.route
     //bottomBar es un parametro de scaffold que nos permite organizar mejor la vista para fijar el contenido abajo
-    Scaffold(bottomBar = { BottomNavigation(items, navController) }) { innerPadding ->
+    Scaffold(
+        bottomBar = {
+            if (currentRoute in bottomBarRoutes) {
+                BottomNavigation(items, navController)
+            }
+        }
+    ) { innerPadding ->
         NavigationBottomWrapper(
             navController = navController,
             modifier = Modifier
@@ -47,6 +66,7 @@ fun BottomNavigation(items: List<BottomBarItem>, navController: NavHostControlle
             NavigationBarItem(
                 icon = item.icon,
                 label = { Text(item.title) },
+                alwaysShowLabel = false,
                 onClick = {
                     navController.navigate(item.route) {
                         navController.graph.startDestinationRoute?.let { route ->
