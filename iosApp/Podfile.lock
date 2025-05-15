@@ -1,0 +1,16 @@
+PODS:
+  - ComposeApp (1.0.0)
+
+DEPENDENCIES:
+  - ComposeApp (from `/Users/miarey/StudioProjects/PokemonStab/composeApp/ComposeApp.podspec`)
+
+EXTERNAL SOURCES:
+  ComposeApp:
+    :path: "/Users/miarey/StudioProjects/PokemonStab/composeApp/ComposeApp.podspec"
+
+SPEC CHECKSUMS:
+  ComposeApp: 9144f3e2bed0def4f6f112d54a511d5432604fd8
+
+PODFILE CHECKSUM: cbaf0d3fe5ef01a90bc78bb2e1d2e1c9ad521ad6
+
+COCOAPODS: 1.16.2
