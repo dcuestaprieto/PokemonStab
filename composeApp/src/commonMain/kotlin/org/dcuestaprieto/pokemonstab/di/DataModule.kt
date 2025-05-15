@@ -5,6 +5,7 @@ import io.ktor.client.plugins.DefaultRequest
 import io.ktor.client.plugins.contentnegotiation.ContentNegotiation
 import io.ktor.http.ContentType
 import io.ktor.http.URLProtocol
+import io.ktor.http.encodedPath
 import io.ktor.serialization.kotlinx.json.json
 import kotlinx.serialization.json.Json
 import org.dcuestaprieto.pokemonstab.data.PokeApiTypeRepository
@@ -24,7 +25,7 @@ val dataModule = module {
             install(DefaultRequest) {
                 url {
                     protocol = URLProtocol.HTTPS
-                    host = "pokeapi.co/api/v2/"
+                    host = "pokeapi.co"
                     //parameters.append("key","value")
                 }
             }
