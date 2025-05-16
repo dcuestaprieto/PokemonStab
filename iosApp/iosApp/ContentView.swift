@@ -12,8 +12,9 @@ struct ComposeView: UIViewControllerRepresentable {
 
 struct ContentView: View {
     var body: some View {
+        //comment the .keyboard to enable edge to edge on ios
         ComposeView()
-                .ignoresSafeArea(.keyboard) // Compose has own keyboard handler
+                .ignoresSafeArea(/*.keyboard*/) // Compose has own keyboard handler
     }
 }
 
