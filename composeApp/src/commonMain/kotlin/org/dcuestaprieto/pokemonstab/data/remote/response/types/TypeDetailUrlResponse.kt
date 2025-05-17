@@ -1,7 +1,7 @@
 package org.dcuestaprieto.pokemonstab.data.remote.response.types
 
 import kotlinx.serialization.Serializable
-import org.dcuestaprieto.pokemonstab.domain.model.TypeModel
+import org.dcuestaprieto.pokemonstab.domain.model.NotFullTypeModel
 
 @Serializable
 data class TypeDetailUrlResponse(
@@ -9,8 +9,8 @@ data class TypeDetailUrlResponse(
     val name: String,
     val imageUrl: String
 ) {
-    fun toDomain(): TypeModel {
-        return TypeModel(
+    fun toDomain(): NotFullTypeModel {
+        return NotFullTypeModel(
             name = name,
             imageUrl = imageUrl
         )
