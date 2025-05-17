@@ -23,10 +23,15 @@ import androidx.compose.ui.graphics.Color
 import androidx.compose.ui.text.style.TextAlign
 import androidx.compose.ui.unit.dp
 import androidx.compose.ui.unit.times
+import androidx.navigation.NavHostController
 import kotlinx.coroutines.launch
 
 @Composable
-fun TypeDetail(typeName: String) {
+fun TypeDetail(navController: NavHostController) {
+    val array = navController.previousBackStackEntry
+        ?.savedStateHandle
+        ?.get<IntArray>("selectedTypes")
+    val types = array?.toList().orEmpty()
     val pagerState = rememberPagerState(
         initialPage = 0,
         pageCount = { 2 }
@@ -93,7 +98,7 @@ fun TypeDetail(typeName: String) {
             modifier = Modifier.fillMaxSize()
         ) { page ->
             when (page) {
-                0 -> FirstScreen(typeName)
+                0 -> FirstScreen(types)
                 1 -> SecondScreen()
             }
         }
@@ -101,12 +106,12 @@ fun TypeDetail(typeName: String) {
 }
 
 @Composable
-fun FirstScreen(content: String) {
+fun FirstScreen(types: List<Int>) {
     Box(
         modifier = Modifier.fillMaxSize(),
         contentAlignment = Alignment.Center
     ) {
-        Text(text = "Vista de tipo $content")
+        Text(text = "Vista de tipo $types")
     }
 }
 
